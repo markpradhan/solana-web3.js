@@ -4360,11 +4360,12 @@ export class Connection {
    * @param commitment Specify the commitment level account changes must reach before notification
    * @return subscription id
    */
-  onAccountChange(
+  onAccountChange = (
     publicKey: PublicKey,
     callback: AccountChangeCallback,
     commitment?: Commitment,
-  ): number {
+  ): number => {
+    console.log('this', this)
     const id = ++this._accountChangeSubscriptionCounter;
     this._accountChangeSubscriptions[id] = {
       publicKey: publicKey.toBase58(),
